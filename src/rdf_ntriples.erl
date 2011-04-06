@@ -1,6 +1,6 @@
 -module(rdf_ntriples).
 
--export([decode/1]).
+-export([decode/1, decode/2]).
 
 decode(Input) ->
   decode(Input, []).
@@ -8,7 +8,7 @@ decode(Input) ->
 decode(<<>>, Accumulator) when is_list(Accumulator) ->
   lists:reverse(Accumulator);
 decode(<<>>, _) ->
-  done;
+  ok;
 decode(Input, Accumulator) ->
   case readline(Input) of
     [Line, Lines] ->
