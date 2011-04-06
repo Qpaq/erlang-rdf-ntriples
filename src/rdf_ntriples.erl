@@ -18,8 +18,8 @@ decode(Input, Accumulator) ->
   end.
 
 decode(Line, Lines, Accumulator) ->
-  case pardec:parse(binary_to_list(Line), line, pardec_rules()) of
-    {Triple={_, _, _}, []} ->
+  case pardec:parse(Line, line, pardec_rules()) of
+    {Triple={_, _, _}, <<>>} ->
       decode(Lines, accumulate(Triple, Accumulator));
     _ ->
       decode(Lines, Accumulator)
