@@ -55,7 +55,7 @@ pardec_rules() ->
   , {object, {either, [uriref, nodeid, literal]}}
   , {uriref, {tag, uriref, {re, "^<([^>]+)>", capture, 1}}}
   , {nodeid, {tag, nodeid, {unseq, [{skip, "_:"}, {re, "^[A-Za-z][A-Za-z0-9]*"}]}}}
-  , {literal, {either, lang_string, datatype_string}}
+  , {literal, {either, datatype_string, lang_string}}
   , {lang_string, {tag, plain_literal, {either, lang_string_with_language, string}}}
   , {lang_string_with_language, {tuple, [string, {skip, $@}, {re, "^([a-z]+(\\-[a-z0-9]+)*)"}]}}
   , {datatype_string, {tag, typed_literal, {tuple, [string, {skip, "^^"}, uriref]}}}
